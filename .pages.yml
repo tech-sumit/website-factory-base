@@ -1,0 +1,167 @@
+media: public/images
+
+settings:
+  content:
+    merge: true
+
+content:
+  - name: site
+    label: Site Settings
+    path: content/site.json
+    type: file
+    format: json
+    fields:
+      - name: business_name
+        label: Business Name
+        type: string
+        required: true
+      - name: headline
+        label: Tagline / Headline
+        type: string
+        required: true
+      - name: phone
+        label: Phone
+        type: string
+      - name: email
+        label: Email
+        type: string
+        pattern:
+          regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          message: Must be a valid email address
+      - name: address
+        label: Address
+        type: text
+      - name: google_maps_url
+        label: Google Maps URL
+        type: string
+      - name: primary_color
+        label: Primary Color
+        type: string
+        default: "#2563EB"
+        pattern:
+          regex: '^#[0-9a-fA-F]{6}$'
+          message: Must be a hex color (e.g. #2563EB)
+
+      - name: about
+        label: About
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: string
+            default: About Us
+          - name: body
+            label: Body
+            type: rich-text
+
+      - name: services
+        label: Services
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.title}"
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: text
+          - name: icon
+            label: Icon (emoji or name)
+            type: string
+
+      - name: faq
+        label: FAQ
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.question}"
+        fields:
+          - name: question
+            label: Question
+            type: string
+            required: true
+          - name: answer
+            label: Answer
+            type: rich-text
+
+      - name: testimonials
+        label: Testimonials
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.author}"
+        fields:
+          - name: author
+            label: Author
+            type: string
+            required: true
+          - name: quote
+            label: Quote
+            type: text
+          - name: rating
+            label: Rating (1-5)
+            type: number
+            default: 5
+
+      - name: hours
+        label: Business Hours
+        type: object
+        fields:
+          - name: monday
+            label: Monday
+            type: string
+          - name: tuesday
+            label: Tuesday
+            type: string
+          - name: wednesday
+            label: Wednesday
+            type: string
+          - name: thursday
+            label: Thursday
+            type: string
+          - name: friday
+            label: Friday
+            type: string
+          - name: saturday
+            label: Saturday
+            type: string
+          - name: sunday
+            label: Sunday
+            type: string
+
+      - name: cta
+        label: Call to Action
+        type: object
+        fields:
+          - name: primary_text
+            label: Primary Button Text
+            type: string
+            default: Get Started
+          - name: primary_url
+            label: Primary Button URL
+            type: string
+            default: "#contact"
+          - name: secondary_text
+            label: Secondary Button Text
+            type: string
+          - name: secondary_url
+            label: Secondary Button URL
+            type: string
+
+      - name: seo
+        label: SEO
+        type: object
+        fields:
+          - name: title
+            label: Page Title
+            type: string
+            required: true
+          - name: description
+            label: Meta Description
+            type: text
+          - name: keywords
+            label: Keywords (comma-separated)
+            type: string
